@@ -1,0 +1,34 @@
+[package]
+name = "ethereum"
+version = "0.15.0"
+license = "Apache-2.0"
+authors = ["Wei Tang <hi@that.world>"]
+description = "Core block and transaction types for Ethereum."
+repository = "https://github.com/rust-blockchain/ethereum"
+keywords = ["no_std", "ethereum"]
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+hash-db15 = { package = "hash-db", version = "0.15.2" }
+hex-literal = "0.4.1"
+rand = "0.8"
+triehash = "0.8.4"
+
+[features]
+default = ["std"]
+with-scale = ["scale-codec", "scale-info", "ethereum-types/codec"]
+with-serde = ["serde", "ethereum-types/serialize"]
+std = [
+	"bytes/std",
+	"ethereum-types/std",
+	"hash-db/std",
+	"hash256-std-hasher/std",
+	"rlp/std",
+	"sha3/std",
+	"trie-root/std",
+	"scale-codec?/std",
+	"scale-info?/std",
+	"serde?/std",
+]
